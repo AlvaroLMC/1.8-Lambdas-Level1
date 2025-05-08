@@ -1,14 +1,17 @@
 package Exercise7;
 
 import java.util.Comparator;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
         Management.loadStrings();
 
-        Management.list.sort(Comparator.comparingInt(String::length).reversed());
+        List<String> sortedList = Management.list.stream()
+                .sorted(Comparator.comparingInt(String::length).reversed())
+                .toList();
 
-        Management.list.forEach(System.out::println);
+        sortedList.forEach(System.out::println);
     }
 }
